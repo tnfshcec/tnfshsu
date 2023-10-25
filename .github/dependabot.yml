@@ -3,8 +3,16 @@ updates:
   - package-ecosystem: "npm"
     directory: "/astro"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+    groups:
+      astro-deps:
+        patterns:
+        - "*"
   - package-ecosystem: "npm"
     directory: "/payload"
     schedule:
-      interval: "daily"
+      interval: "monthly"
+    groups:
+      payload-deps:
+        patterns:
+        - "*"
