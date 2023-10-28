@@ -4,6 +4,8 @@ services:
     restart: unless-stopped
     build:
       context: astro
+    environment:
+      PAYLOAD_URL: ${PAYLOAD_URL}
     networks:
       - front
     depends_on:
