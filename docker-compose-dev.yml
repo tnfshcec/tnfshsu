@@ -6,7 +6,7 @@ services:
       - ./astro:/base
       - /base/node_modules/
     ports:
-      - 3000:3000
+      - 4321:4321
 
   payload:
     build:

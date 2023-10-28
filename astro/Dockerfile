@@ -6,7 +6,7 @@ COPY . .
 
 FROM base AS dev
 ENV NODE_ENV=development
-EXPOSE 3000
+EXPOSE 4321
 CMD ["npm", "run", "dev"]
 
 FROM base AS build
