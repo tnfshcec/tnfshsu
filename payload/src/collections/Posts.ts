@@ -13,6 +13,7 @@ const Posts: CollectionConfig = {
   hooks: {
     afterChange: [
       async () => {
+        /*
         console.log(process.env.TOKEN);
 
         try {
@@ -35,6 +36,7 @@ const Posts: CollectionConfig = {
         } catch (e) {
           console.log(e);
         }
+        */
       },
     ],
   },
@@ -55,24 +57,6 @@ const Posts: CollectionConfig = {
     {
       name: "content",
       type: "richText",
-      admin: {
-        elements: ["h2", "h3", "h4", "link", "ol", "ul", "upload"],
-        leaves: ["bold", "italic", "underline"],
-        upload: {
-          collections: {
-            media: {
-              fields: [
-                {
-                  name: "imagel",
-                  type: "upload",
-                  relationTo: "media",
-                  required: true,
-                },
-              ],
-            },
-          },
-        },
-      },
     },
     {
       name: "status",
