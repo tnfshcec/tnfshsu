@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@astrojs/prefetch": "^0.4.1",
-    "@astrojs/sitemap": "^3.0.2",
+    "@astrojs/sitemap": "^3.0.3",
     "@astrojs/tailwind": "^5.0.2",
     "@slate-serializers/dom": "^2.1.0",
     "@slate-serializers/html": "^2.1.0",
