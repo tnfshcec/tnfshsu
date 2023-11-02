@@ -14,7 +14,7 @@
     "@astrojs/tailwind": "^5.0.2",
     "@slate-serializers/dom": "^2.1.0",
     "@slate-serializers/html": "^2.1.0",
-    "astro": "^3.4.0",
+    "astro": "^3.4.2",
     "css-select": "5.1.0",
     "sharp": "^0.32.6",
     "tailwindcss": "^3.3.3"
