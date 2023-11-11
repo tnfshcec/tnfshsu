@@ -3,7 +3,7 @@ services:
     container_name: ${NAME}-astro
     restart: unless-stopped
     build:
-      context: astro
+      dockerfile: ./astro/Dockerfile
     environment:
       PAYLOAD_URL: ${PAYLOAD_URL}
     networks:
@@ -15,7 +15,7 @@ services:
     container_name: ${NAME}-payload
     restart: unless-stopped
     build:
-      context: payload
+      dockerfile: ./payload/Dockerfile
     environment:
       NAME: ${NAME}
       PAYLOAD_URL: ${PAYLOAD_URL}
