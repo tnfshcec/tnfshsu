@@ -1,12 +1,14 @@
 import { buildConfig } from "payload/config";
 import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { slateEditor } from "@payloadcms/richtext-slate";
+import { webpackBundler } from "@payloadcms/bundler-webpack";
 import path from "path";
+import addLastModified from "./plugins/lastModified";
+
 import Posts from "@/collections/Posts";
+import Departments from "@/collections/Departments";
 import Users from "@/collections/Users";
 import Media from "@/collections/Media";
-import { webpackBundler } from "@payloadcms/bundler-webpack";
-import addLastModified from "./plugins/lastModified";
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_URL,
@@ -24,7 +26,7 @@ export default buildConfig({
       },
     }),
   },
-  collections: [Posts, Users, Media],
+  collections: [Posts, Departments, Users, Media],
   db: mongooseAdapter({
     url: process.env.MONGODB_URI,
   }),

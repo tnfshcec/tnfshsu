@@ -6,38 +6,24 @@ export interface AddLastModifiedConfig {
 
 export default function addLastModified({ usersCollection }: AddLastModifiedConfig): Plugin {
   return (incomingConfig: Config): Config => {
+    let config: Config = { ...incomingConfig }
 
-    // Spread the existing config
-    const config: Config = {
-      ...incomingConfig,
-      collections: incomingConfig.collections.map((collection) => {
-        // Spread each item that we are modifying,
-        // and add our new field - complete with
-        // hooks and proper admin UI config
-        return {
-          ...collection,
-          fields: [
-            ...collection.fields,
-            {
-              name: 'lastModifiedBy',
-              type: 'relationship',
-              relationTo: usersCollection,
-              defaultValue: ({ user }) => user.id,
-              hooks: {
-                beforeChange: [
-                  ({ req }) => ({
-                    value: req?.user?.id,
-                  }),
-                ],
-              },
-              admin: {
-                position: 'sidebar',
-                readOnly: true,
-              },
-            },
+    for (let coll of config.collections) {
+      coll.fields.push({
+        name: 'lastModifiedBy',
+        type: 'relationship',
+        relationTo: usersCollection,
+        defaultValue: ({ user }) => user?.id,
+        hooks: {
+          beforeChange: [
+            ({ req }) => req?.user?.id,
           ],
-        }
-      }),
+        },
+        admin: {
+          position: 'sidebar',
+          readOnly: true,
+        },
+      })
     }
 
     return config

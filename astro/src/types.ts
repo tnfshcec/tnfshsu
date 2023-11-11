@@ -9,6 +9,7 @@
 export interface Config {
   collections: {
     posts: Post;
+    departments: Department;
     users: User;
     media: Media;
     'payload-preferences': PayloadPreference;
@@ -19,12 +20,23 @@ export interface Config {
 export interface Post {
   id: string;
   title?: string;
-  department?: 'Dep1' | 'Dep2';
+  department?: string | Department;
   tags?: {
     tag?: string;
     id?: string;
   }[];
   content?: {
+    [k: string]: unknown;
+  }[];
+  lastModifiedBy?: string | User;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Department {
+  id: string;
+  name?: string;
+  overview?: string;
+  description?: {
     [k: string]: unknown;
   }[];
   lastModifiedBy?: string | User;

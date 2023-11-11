@@ -1,4 +1,5 @@
 import { CollectionConfig } from "payload/types";
+
 const Posts: CollectionConfig = {
   slug: "posts",
   admin: {
@@ -17,10 +18,9 @@ const Posts: CollectionConfig = {
     },
     {
       name: "department",
-      type: "select",
-      options: [
-        "Dep1", "Dep2"
-      ]
+      type: "relationship",
+      relationTo: "departments",
+      admin: { allowCreate: false }
     },
     {
       name: "tags",
