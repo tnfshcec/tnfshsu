@@ -6,6 +6,7 @@ import Posts from "@/collections/Posts";
 import Users from "@/collections/Users";
 import Media from "@/collections/Media";
 import { webpackBundler } from "@payloadcms/bundler-webpack";
+import addLastModified from "./plugins/lastModified";
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_URL,
@@ -47,6 +48,9 @@ export default buildConfig({
       },
     },
   }),
+  plugins: [
+    addLastModified({ usersCollection: "users" })
+  ],
   typescript: {
     outputFile: path.resolve("/", "types.ts"),
   },

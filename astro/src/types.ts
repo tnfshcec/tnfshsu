@@ -19,18 +19,22 @@ export interface Config {
 export interface Post {
   id: string;
   title?: string;
-  hallo?: string;
-  publishedDate?: string;
+  department?: 'Dep1' | 'Dep2';
+  tags?: {
+    tag?: string;
+    id?: string;
+  }[];
   content?: {
     [k: string]: unknown;
   }[];
-  status?: 'draft' | 'published';
+  lastModifiedBy?: string | User;
   updatedAt: string;
   createdAt: string;
 }
 export interface User {
   id: string;
   name?: string;
+  lastModifiedBy?: string | User;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -45,6 +49,7 @@ export interface User {
 export interface Media {
   id: string;
   alt?: string;
+  lastModifiedBy?: string | User;
   updatedAt: string;
   createdAt: string;
   url?: string;

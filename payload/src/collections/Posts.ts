@@ -10,71 +10,26 @@ const Posts: CollectionConfig = {
     create: () => true,
     update: () => true,
   },
-  hooks: {
-    afterChange: [
-      async () => {
-        /*
-        console.log(process.env.TOKEN);
-
-        try {
-          process.env.NODE_ENV !== "development" &&
-            console.log(
-              await fetch(
-                `https://api.github.com/repos/${process.env.REPOSITORY}/dispatches`,
-                {
-                  method: "POST",
-                  headers: {
-                    Accept: "application/vnd.github.everest-preview+json",
-                    Authorization: `token ${process.env.TOKEN}`,
-                  },
-                  body: JSON.stringify({
-                    event_type: "payload_update",
-                  }),
-                }
-              )
-            );
-        } catch (e) {
-          console.log(e);
-        }
-        */
-      },
-    ],
-  },
   fields: [
     {
       name: "title",
       type: "text",
     },
     {
-      name: "hallo",
-      type: "text",
+      name: "department",
+      type: "select",
+      options: [
+        "Dep1", "Dep2"
+      ]
     },
     {
-      name: "publishedDate",
-      type: "date",
+      name: "tags",
+      type: "array",
+      fields: [{ name: "tag", type: "text" }]
     },
-
     {
       name: "content",
       type: "richText",
-    },
-    {
-      name: "status",
-      type: "select",
-      options: [
-        {
-          value: "draft",
-          label: "Draft",
-        },
-        {
-          value: "published",
-          label: "Published",
-        },
-      ],
-      defaultValue: "draft",
-      admin: {
-        position: "sidebar",
-      },
     },
   ],
 };
