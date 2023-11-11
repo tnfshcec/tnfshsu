@@ -1,11 +1,16 @@
 {
-  "name": "astroad",
-  "description": "A pre-configured setup for easy website development with Astro and Payload CMS using Docker.",
-  "license": "MIT",
-  "version": "1.1",
+  "name": "tnfshsu-web",
+  "workspaces": [
+    "astro",
+    "payload"
+  ],
   "scripts": {
     "dev": "docker compose -f docker-compose.yml -f docker-compose-dev.yml  up --build",
     "prod": "docker compose -f docker-compose.yml -f docker-compose-prod.yml up -d --build",
     "stop": "docker compose -f docker-compose.yml -f docker-compose-dev.yml down && docker compose -f docker-compose.yml -f docker-compose-prod.yml down"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.1"
   }
 }

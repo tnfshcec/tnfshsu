@@ -25,7 +25,7 @@ export default buildConfig({
   },
   collections: [Posts, Users, Media],
   db: mongooseAdapter({
-    url: process.env.MONGODB_URI
+    url: process.env.MONGODB_URI,
   }),
   editor: slateEditor({
     admin: {
@@ -45,7 +45,7 @@ export default buildConfig({
           },
         },
       },
-    }
+    },
   }),
   typescript: {
     outputFile: path.resolve("/", "types.ts"),

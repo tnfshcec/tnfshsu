@@ -1,3 +1,23 @@
+.DS_Store
 data
-yarn-debug.log*
-yarn-error.log*
+.env
+.env.*
+!.env.example
+
+**/node_modules
+
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+# astro
+astro/dist/
+astro/.astro/
+astro/node_modules/
+astro/src/types.ts
+
+# payload
+payload/build
+payload/dist
+payload/src/media

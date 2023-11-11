@@ -1,21 +1,12 @@
 version: 2
 updates:
   - package-ecosystem: "npm"
-    directory: "/astro"
+    directory: "/"
+    versioning-strategy: "increase"
     schedule:
       interval: "monthly"
     groups:
-      astro-deps:
-        patterns: ["*"]
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-patch"]
-  - package-ecosystem: "npm"
-    directory: "/payload"
-    schedule:
-      interval: "monthly"
-    groups:
-      payload-deps:
+      deps:
         patterns: ["*"]
     ignore:
       - dependency-name: "*"

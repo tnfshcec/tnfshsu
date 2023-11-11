@@ -18,7 +18,7 @@ export const Media: CollectionConfig = {
     {
       name: "alt",
       type: "text",
-      defaultValue: () => ""
+      defaultValue: () => "",
     },
   ],
 };

@@ -1,17 +1,13 @@
 import type { Media, Post } from "@/types";
 import { Element } from "domhandler";
 import { slateToHtml } from "@slate-serializers/html";
-import {
-  payloadSlateToDomConfig,
-  type ElementTransform,
-} from "@slate-serializers/dom";
+import { payloadSlateToDomConfig, type ElementTransform } from "@slate-serializers/dom";
 
 const externalUrl = import.meta.env.PAYLOAD_URL;
 
 const url = import.meta.env.DEV ? "http://payload:3001" : externalUrl;
 
-export const getPosts = async () =>
-  (await (await fetch(`${url}/api/posts`)).json()).docs as Post[];
+export const getPosts = async () => (await (await fetch(`${url}/api/posts`)).json()).docs as Post[];
 
 export const getPost = async (id: string) =>
   (await (await fetch(`${url}/api/posts/${id}`)).json()) as Post;
