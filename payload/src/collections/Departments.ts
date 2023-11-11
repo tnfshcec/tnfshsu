@@ -1,6 +1,6 @@
 import { CollectionConfig } from "payload/types";
 
-export const Departments: CollectionConfig = {
+const Departments: CollectionConfig = {
   slug: "departments",
   admin: {
     useAsTitle: "name"
