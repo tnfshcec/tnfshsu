@@ -1,8 +1,8 @@
 FROM node:lts-alpine as base
 WORKDIR /base
-COPY package.json package-lock.json ./
-RUN npm ci
-COPY . .
+COPY payload/package.json package-lock.json ./
+RUN npm install
+COPY payload .
 
 FROM base AS dev
 ENV NODE_ENV=development
