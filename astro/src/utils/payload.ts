@@ -1,35 +1,23 @@
-import type { Media, Post } from "@/types";
-import { Element } from "domhandler";
-import { slateToHtml } from "@slate-serializers/html";
-import { payloadSlateToDomConfig, type ElementTransform } from "@slate-serializers/dom";
+import type { Department, Faq, Post } from "@/types";
 
-const externalUrl = import.meta.env.PAYLOAD_URL;
+const url = import.meta.env.DEV ? "http://payload:3001" : import.meta.env.PAYLOAD_URL;
 
-const url = import.meta.env.DEV ? "http://payload:3001" : externalUrl;
+async function request(path: string) {
+  return (await fetch(`${url}/api/${path}`)).json();
+}
 
-export const getPosts = async () => (await (await fetch(`${url}/api/posts`)).json()).docs as Post[];
+export async function getPosts(): Promise<Post[]> {
+  return request("posts").then((r) => r.docs);
+}
 
-export const getPost = async (id: string) =>
-  (await (await fetch(`${url}/api/posts/${id}`)).json()) as Post;
+export async function getPost(id: string): Promise<Post> {
+  return request(`posts/${id}`);
+}
 
-export const getImageSrc = (src: string) => `${externalUrl}/media/${src}`;
+export async function getDepartments(): Promise<Department[]> {
+  return await request("departments").then((r) => r.docs);
+}
 
-const upload: ElementTransform = ({ node }: { node?: { value: Media } }) => {
-  if (!node || !node.value.filename) return undefined;
-
-  return new Element("img", {
-    src: getImageSrc(node.value.filename),
-    width: `${node.value.width}`,
-    height: `${node.value.height}`,
-    alt: node.value.alt ?? "",
-    decoding: "async",
-    loading: "lazy",
-  });
-};
-
-let payloadConfig = payloadSlateToDomConfig;
-payloadConfig.elementTransforms.upload = upload;
-
-export const getContent = (content: NonNullable<Post["content"]>) => {
-  return slateToHtml(content, payloadConfig);
-};
+export async function getFaq(): Promise<Faq> {
+  return request("globals/faq");
+}

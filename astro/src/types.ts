@@ -15,61 +15,69 @@ export interface Config {
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  globals: {};
+  globals: {
+    faq: Faq;
+  };
 }
 export interface Post {
   id: string;
-  title?: string;
-  department?: string | Department;
-  tags?: {
-    tag?: string;
-    id?: string;
-  }[];
-  content?: {
-    [k: string]: unknown;
-  }[];
-  lastModifiedBy?: string | User;
+  title?: string | null;
+  department?: (string | null) | Department;
+  tags?:
+    | {
+        tag?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  content?:
+    | {
+        [k: string]: unknown;
+      }[]
+    | null;
+  lastModifiedBy?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
 }
 export interface Department {
   id: string;
-  name?: string;
-  overview?: string;
-  description?: {
-    [k: string]: unknown;
-  }[];
-  lastModifiedBy?: string | User;
+  name?: string | null;
+  overview?: string | null;
+  description?:
+    | {
+        [k: string]: unknown;
+      }[]
+    | null;
+  lastModifiedBy?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
 }
 export interface User {
   id: string;
-  name?: string;
-  lastModifiedBy?: string | User;
+  name?: string | null;
+  lastModifiedBy?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
   email: string;
-  resetPasswordToken?: string;
-  resetPasswordExpiration?: string;
-  salt?: string;
-  hash?: string;
-  loginAttempts?: number;
-  lockUntil?: string;
-  password: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password: string | null;
 }
 export interface Media {
   id: string;
-  alt?: string;
-  lastModifiedBy?: string | User;
+  alt?: string | null;
+  lastModifiedBy?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
 }
 export interface PayloadPreference {
   id: string;
@@ -77,7 +85,7 @@ export interface PayloadPreference {
     relationTo: 'users';
     value: string | User;
   };
-  key?: string;
+  key?: string | null;
   value?:
     | {
         [k: string]: unknown;
@@ -92,10 +100,22 @@ export interface PayloadPreference {
 }
 export interface PayloadMigration {
   id: string;
-  name?: string;
-  batch?: number;
+  name?: string | null;
+  batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+export interface Faq {
+  id: string;
+  entries?:
+    | {
+        question?: string | null;
+        answer?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 
 
