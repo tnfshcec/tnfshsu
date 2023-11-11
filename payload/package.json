@@ -11,11 +11,11 @@
   "dependencies": {
     "@payloadcms/bundler-webpack": "^1.0.4",
     "@payloadcms/db-mongodb": "^1.0.4",
-    "@payloadcms/richtext-slate": "^1.0.7",
+    "@payloadcms/richtext-slate": "^1.1.0",
     "cross-env": "^7.0.3",
     "dotenv": "^16.3.1",
     "express": "^4.17.1",
-    "payload": "^2.0.13",
+    "payload": "^2.1.1",
     "tsconfig-paths": "^4.2.0"
   },
   "devDependencies": {
