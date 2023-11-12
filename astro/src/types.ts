@@ -23,12 +23,7 @@ export interface Post {
   id: string;
   title?: string | null;
   department?: (string | null) | Department;
-  tags?:
-    | {
-        tag?: string | null;
-        id?: string | null;
-      }[]
-    | null;
+  tags?: string | null;
   content?:
     | {
         [k: string]: unknown;

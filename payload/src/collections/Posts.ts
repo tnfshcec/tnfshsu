@@ -1,3 +1,4 @@
+import TagInput from "@/components/TagInput";
 import { CollectionConfig } from "payload/types";
 
 const Posts: CollectionConfig = {
@@ -23,9 +24,12 @@ const Posts: CollectionConfig = {
       admin: { allowCreate: false }
     },
     {
+      // TODO: Use array instead, only using string is weird
       name: "tags",
-      type: "array",
-      fields: [{ name: "tag", type: "text" }]
+      type: "text",
+      admin: {
+        components: { Field: TagInput }
+      }
     },
     {
       name: "content",
