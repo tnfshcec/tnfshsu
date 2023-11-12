@@ -36,6 +36,16 @@ export interface Post {
 export interface Department {
   id: string;
   name?: string | null;
+  icon?:
+    | (
+        | 'mdi_fountain-pen-tip'
+        | 'mdi_volleyball'
+        | 'mdi_account-group'
+        | 'mdi_currency-usd'
+        | 'mdi_text-box-multiple'
+        | 'mdi_bullhorn'
+      )
+    | null;
   overview?: string | null;
   description?:
     | {

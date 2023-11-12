@@ -24,7 +24,8 @@ const Posts: CollectionConfig = {
       admin: { allowCreate: false },
     },
     {
-      // TODO: Use array instead, only using string is weird
+      // INFO: saved as space-delimited text,
+      // which is not ideal - good enough (i guess)
       name: "tags",
       type: "text",
       admin: {
