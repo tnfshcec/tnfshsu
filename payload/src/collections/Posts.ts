@@ -21,15 +21,15 @@ const Posts: CollectionConfig = {
       name: "department",
       type: "relationship",
       relationTo: "departments",
-      admin: { allowCreate: false }
+      admin: { allowCreate: false },
     },
     {
       // TODO: Use array instead, only using string is weird
       name: "tags",
       type: "text",
       admin: {
-        components: { Field: TagInput }
-      }
+        components: { Field: TagInput },
+      },
     },
     {
       name: "content",

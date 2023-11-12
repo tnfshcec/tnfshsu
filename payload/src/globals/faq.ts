@@ -6,20 +6,22 @@ const FAQ: GlobalConfig = {
     read: () => true,
     update: () => true,
   },
-  fields: [{
-    name: "entries",
-    type: "array",
-    fields: [
-      {
-        name: "question",
-        type: "text"
-      },
-      {
-        name: "answer",
-        type: "text"
-      }
-    ]
-  }]
-}
+  fields: [
+    {
+      name: "entries",
+      type: "array",
+      fields: [
+        {
+          name: "question",
+          type: "text",
+        },
+        {
+          name: "answer",
+          type: "text",
+        },
+      ],
+    },
+  ],
+};
 
 export default FAQ;

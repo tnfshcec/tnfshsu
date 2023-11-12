@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { TagsInput } from "react-tag-input-component";
 import { Label, useField } from "payload/components/forms";
 
@@ -12,38 +12,30 @@ type Props = {
   name: string;
 };
 
-const TagInput: React.FC<Props> = ({
-  className,
-  path,
-  placeholder,
-  label,
-  name
-}) => {
-  const { value, setValue, showError } = useField<string>({ path })
+const TagInput: React.FC<Props> = ({ className, path, placeholder, label, name }) => {
+  const { value, setValue, showError } = useField<string>({ path });
 
-  const [tags, setTags] = useState<string[]>(value?.split(" ") ?? [])
+  const tags = value?.split(" ") ?? [];
+  const setTags = (array: string[]) => setValue(array.join(" "));
 
-  useEffect(() => setValue(tags.join(" ")), [tags])
-  useEffect(() => console.log(tags), [tags])
-
-  const classes = [
-    'field-type',
-    'text',
-    className,
-    showError && 'error',
-    'container',
-  ]
+  const classes = ["field-type", "text", className, showError && "error", "container"]
     .filter(Boolean)
-    .join(' ')
+    .join(" ");
 
   return (
     <div className="tagInputFieldWrapper">
-      <Label htmlFor={`field-${path.replace(/\./gi, '__')}`} label={label} />
+      <Label htmlFor={`field-${path.replace(/\./gi, "__")}`} label={label} />
       <div className={classes}>
-        <TagsInput name={name} value={tags} onChange={setTags} placeHolder={placeholder} separators={["Enter", " "]} />
+        <TagsInput
+          name={name}
+          value={tags}
+          onChange={setTags}
+          placeHolder={placeholder}
+          separators={["Enter", " "]}
+        />
       </div>
     </div>
-  )
+  );
 };
 
 export default TagInput;

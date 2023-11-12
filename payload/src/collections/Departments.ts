@@ -3,7 +3,7 @@ import { CollectionConfig } from "payload/types";
 const Departments: CollectionConfig = {
   slug: "departments",
   admin: {
-    useAsTitle: "name"
+    useAsTitle: "name",
   },
   access: {
     read: () => true,
@@ -13,17 +13,17 @@ const Departments: CollectionConfig = {
   fields: [
     {
       name: "name",
-      type: "text"
+      type: "text",
     },
     {
       name: "overview",
       type: "text",
-      maxLength: 60
+      maxLength: 60,
     },
     {
       name: "description",
       type: "richText",
-    }
+    },
   ],
 };
 

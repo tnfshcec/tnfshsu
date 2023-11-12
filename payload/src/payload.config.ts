@@ -52,9 +52,7 @@ export default buildConfig({
       },
     },
   }),
-  plugins: [
-    addLastModified({ usersCollection: "users" })
-  ],
+  plugins: [addLastModified({ usersCollection: "users" })],
   typescript: {
     outputFile: path.resolve("/", "types.ts"),
   },
