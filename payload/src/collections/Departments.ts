@@ -1,3 +1,4 @@
+import IconSelector from "@/components/IconSelector";
 import { CollectionConfig } from "payload/types";
 
 const Departments: CollectionConfig = {
@@ -18,33 +19,41 @@ const Departments: CollectionConfig = {
     {
       name: "icon",
       // TODO: custom icon picker with type "text"
-      type: "select",
-      options: [
-        {
-          label: "秘書",
-          value: "mdi_fountain-pen-tip",
+      type: "text",
+      admin: {
+        components: {
+          Field: (props) =>
+            IconSelector({
+              ...props,
+              icons: [
+                {
+                  label: "秘書",
+                  value: "mdi:fountain-pen-tip",
+                },
+                {
+                  label: "活動",
+                  value: "mdi:volleyball",
+                },
+                {
+                  label: "公關",
+                  value: "mdi:account-group",
+                },
+                {
+                  label: "財政",
+                  value: "mdi:currency-usd",
+                },
+                {
+                  label: "主計",
+                  value: "mdi:text-box-multiple",
+                },
+                {
+                  label: "學權",
+                  value: "mdi:bullhorn",
+                },
+              ],
+            }),
         },
-        {
-          label: "活動",
-          value: "mdi_volleyball",
-        },
-        {
-          label: "公關",
-          value: "mdi_account-group",
-        },
-        {
-          label: "財政",
-          value: "mdi_currency-usd",
-        },
-        {
-          label: "主計",
-          value: "mdi_text-box-multiple",
-        },
-        {
-          label: "學權",
-          value: "mdi_bullhorn",
-        },
-      ],
+      },
     },
     {
       name: "overview",

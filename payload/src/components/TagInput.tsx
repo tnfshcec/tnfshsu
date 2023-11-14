@@ -8,14 +8,12 @@ import { MultiValue } from "payload/dist/admin/components/elements/ReactSelect/M
 import { MultiValueLabel } from "payload/dist/admin/components/elements/ReactSelect/MultiValueLabel";
 import { MultiValueRemove } from "payload/dist/admin/components/elements/ReactSelect/MultiValueRemove";
 import { ValueContainer } from "payload/dist/admin/components/elements/ReactSelect/ValueContainer";
+import { Option } from "payload/dist/admin/components/elements/ReactSelect/types";
 
 import "./TagInput.scss";
-import { Option } from "payload/dist/admin/components/elements/ReactSelect/types";
 
 type Props = {
   path: string;
-  placeholder: string;
-  className: string;
   label: string;
   name: string;
 };
@@ -30,8 +28,8 @@ const components = {
   DropdownIndicator: null,
 };
 
-const TagInput: React.FC<Props> = ({ path, placeholder, className, label, name }) => {
-  const { value, setValue, showError } = useField<string>({ path });
+const TagInput: React.FC<Props> = ({ path, label, name }) => {
+  const { value, setValue } = useField<string>({ path });
 
   const [inputValue, setInputValue] = React.useState("");
 
@@ -43,10 +41,6 @@ const TagInput: React.FC<Props> = ({ path, placeholder, className, label, name }
   const setTags = (opt: Option | Option[]) => {
     setValue(Array.isArray(opt) ? opt.map((o) => o.value).join(" ") : opt.value);
   };
-
-  const classes = [className, "react-select", showError && "react-select--error"]
-    .filter(Boolean)
-    .join(" ");
 
   const handleKeyDown: KeyboardEventHandler = (event) => {
     if (!inputValue) return;
@@ -61,13 +55,13 @@ const TagInput: React.FC<Props> = ({ path, placeholder, className, label, name }
   };
 
   return (
-    <div>
+    <div className="field-type">
       <Label htmlFor={`field-${path.replace(/\./gi, "__")}`} label={label} />
       <CreatableSelect
         components={components}
         inputValue={inputValue}
         name={name}
-        className={classes}
+        className="react-select"
         classNamePrefix="rs"
         isClearable
         isMulti
@@ -75,7 +69,6 @@ const TagInput: React.FC<Props> = ({ path, placeholder, className, label, name }
         onChange={(newValue: Option | Option[]) => setTags(newValue)}
         onInputChange={(newValue) => setInputValue(newValue)}
         onKeyDown={handleKeyDown}
-        placeholder={placeholder}
         value={tags}
       />
     </div>
