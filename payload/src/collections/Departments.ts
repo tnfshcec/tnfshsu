@@ -19,7 +19,6 @@ const Departments: CollectionConfig = {
     },
     {
       name: "icon",
-      // TODO: custom icon picker with type "text"
       type: "text",
       required: true,
       admin: {

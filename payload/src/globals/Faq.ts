@@ -1,6 +1,6 @@
-import { GlobalConfig } from "payload/types";
+import type { GlobalConfig } from "payload/types";
 
-const FAQ: GlobalConfig = {
+const Faq: GlobalConfig = {
   slug: "faq",
   access: {
     read: () => true,
@@ -14,14 +14,16 @@ const FAQ: GlobalConfig = {
         {
           name: "question",
           type: "text",
+          required: true,
         },
         {
           name: "answer",
           type: "text",
+          required: true,
         },
       ],
     },
   ],
 };
 
-export default FAQ;
+export default Faq;

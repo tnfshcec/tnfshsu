@@ -17,6 +17,7 @@ export interface Config {
   };
   globals: {
     faq: Faq;
+    socials: Social;
   };
 }
 export interface Post {
@@ -101,8 +102,21 @@ export interface Faq {
   id: string;
   entries?:
     | {
-        question?: string | null;
-        answer?: string | null;
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+export interface Social {
+  id: string;
+  entries?:
+    | {
+        Name: string;
+        url: string;
+        icon: string;
         id?: string | null;
       }[]
     | null;

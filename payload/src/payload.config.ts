@@ -9,7 +9,8 @@ import Posts from "@/collections/Posts";
 import Departments from "@/collections/Departments";
 import Users from "@/collections/Users";
 import Media from "@/collections/Media";
-import FAQ from "@/globals/faq";
+import Faq from "@/globals/Faq";
+import Socials from "@/globals/Socials";
 
 export default buildConfig({
   serverURL: process.env.PAYLOAD_URL,
@@ -28,7 +29,7 @@ export default buildConfig({
     }),
   },
   collections: [Posts, Departments, Users, Media],
-  globals: [FAQ],
+  globals: [Faq, Socials],
   db: mongooseAdapter({
     url: process.env.MONGODB_URI,
   }),

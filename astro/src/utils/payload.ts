@@ -1,4 +1,4 @@
-import type { Department, Faq, Post } from "@/types";
+import type { Department, Faq, Post, Social } from "@/types";
 
 const url = import.meta.env.DEV ? "http://payload:3001" : import.meta.env.PAYLOAD_URL;
 
@@ -20,4 +20,8 @@ export async function getDepartments(): Promise<Department[]> {
 
 export async function getFaq(): Promise<Faq> {
   return request("globals/faq");
+}
+
+export async function getSocials(): Promise<Social> {
+  return request("globals/socials");
 }
