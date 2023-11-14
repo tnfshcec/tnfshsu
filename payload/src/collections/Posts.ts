@@ -33,6 +33,7 @@ const Posts: CollectionConfig = {
       required: true,
       admin: {
         components: { Field: TagInput },
+        placeholder: "Type in tags... (Submit by Enter or Space)"
       },
     },
     {

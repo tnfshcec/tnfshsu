@@ -1,6 +1,8 @@
 import React from "react";
-import { FieldDescription, Label, useField } from "payload/components/forms";
 import Select from "react-select";
+import { useTranslation } from "react-i18next";
+import { getTranslation } from "payload/utilities";
+import { FieldDescription, Label, useField } from "payload/components/forms";
 import type { TextField } from "payload/types";
 
 import { ClearIndicator } from "payload/dist/admin/components/elements/ReactSelect/ClearIndicator";
@@ -11,8 +13,6 @@ import { MultiValueRemove } from "payload/dist/admin/components/elements/ReactSe
 import { ValueContainer } from "payload/dist/admin/components/elements/ReactSelect/ValueContainer";
 import Chevron from "payload/dist/admin/components/icons/Chevron";
 import { Option } from "payload/dist/admin/components/elements/ReactSelect/types";
-
-import "./TagInput.scss";
 
 type Props = Omit<TextField, "type"> & {
   path: string;
@@ -48,9 +48,10 @@ const IconSelector: React.FC<Props> = ({
   required,
   icons,
   searchTimeout,
-  admin: { description },
+  admin: { description, placeholder },
 }) => {
   const { value, setValue } = useField<string>({ path });
+  const { i18n } = useTranslation();
 
   const [options, setOptions] = React.useState(icons);
 
@@ -80,6 +81,7 @@ const IconSelector: React.FC<Props> = ({
         onChange={setIcon}
         onInputChange={handleInput}
         options={options}
+        placeholder={getTranslation(placeholder, i18n)}
         value={icon}
       />
       <FieldDescription description={description} value={value} />

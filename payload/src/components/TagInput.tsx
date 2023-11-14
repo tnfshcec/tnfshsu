@@ -1,6 +1,8 @@
 import React, { type KeyboardEventHandler } from "react";
-import { FieldDescription, Label, useField } from "payload/components/forms";
 import CreatableSelect from "react-select/creatable";
+import { useTranslation } from "react-i18next";
+import { getTranslation } from "payload/utilities";
+import { FieldDescription, Label, useField } from "payload/components/forms";
 import { type TextField } from "payload/types";
 
 import { ClearIndicator } from "payload/dist/admin/components/elements/ReactSelect/ClearIndicator";
@@ -10,8 +12,6 @@ import { MultiValueLabel } from "payload/dist/admin/components/elements/ReactSel
 import { MultiValueRemove } from "payload/dist/admin/components/elements/ReactSelect/MultiValueRemove";
 import { ValueContainer } from "payload/dist/admin/components/elements/ReactSelect/ValueContainer";
 import { Option } from "payload/dist/admin/components/elements/ReactSelect/types";
-
-import "./TagInput.scss";
 
 type Props = Omit<TextField, "type"> & {
   path: string;
@@ -27,8 +27,9 @@ const components = {
   DropdownIndicator: null,
 };
 
-const TagInput: React.FC<Props> = ({ path, label, name, required, admin: { description } }) => {
+const TagInput: React.FC<Props> = ({ path, label, name, required, admin: { description, placeholder } }) => {
   const { value, setValue } = useField<string>({ path });
+  const { i18n } = useTranslation();
 
   const [inputValue, setInputValue] = React.useState("");
 
@@ -68,6 +69,7 @@ const TagInput: React.FC<Props> = ({ path, label, name, required, admin: { descr
         onChange={(newValue: Option | Option[]) => setTags(newValue)}
         onInputChange={(newValue) => setInputValue(newValue)}
         onKeyDown={handleKeyDown}
+        placeholder={getTranslation(placeholder, i18n)}
         value={tags}
       />
       <FieldDescription description={description} value={value} />
