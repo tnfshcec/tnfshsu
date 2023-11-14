@@ -21,28 +21,24 @@ export interface Config {
 }
 export interface Post {
   id: string;
-  title?: string | null;
-  department?: (string | null) | Department;
-  tags?: string | null;
-  content?:
-    | {
-        [k: string]: unknown;
-      }[]
-    | null;
+  title: string;
+  department: string | Department;
+  tags: string;
+  content: {
+    [k: string]: unknown;
+  }[];
   lastModifiedBy?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
 }
 export interface Department {
   id: string;
-  name?: string | null;
-  icon?: string | null;
-  overview?: string | null;
-  description?:
-    | {
-        [k: string]: unknown;
-      }[]
-    | null;
+  name: string;
+  icon: string;
+  overview: string;
+  description: {
+    [k: string]: unknown;
+  }[];
   lastModifiedBy?: (string | null) | User;
   updatedAt: string;
   createdAt: string;

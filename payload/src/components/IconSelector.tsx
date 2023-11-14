@@ -1,5 +1,5 @@
 import React from "react";
-import { Label, useField } from "payload/components/forms";
+import { FieldDescription, Label, useField } from "payload/components/forms";
 import Select from "react-select";
 import type { TextField } from "payload/types";
 
@@ -41,7 +41,15 @@ const components = {
   DropdownIndicator: Chevron,
 };
 
-const IconSelector: React.FC<Props> = ({ path, label, name, required, icons, searchTimeout }) => {
+const IconSelector: React.FC<Props> = ({
+  path,
+  label,
+  name,
+  required,
+  icons,
+  searchTimeout,
+  admin: { description },
+}) => {
   const { value, setValue } = useField<string>({ path });
 
   const [options, setOptions] = React.useState(icons);
@@ -74,6 +82,7 @@ const IconSelector: React.FC<Props> = ({ path, label, name, required, icons, sea
         options={options}
         value={icon}
       />
+      <FieldDescription description={description} value={value} />
     </div>
   );
 };

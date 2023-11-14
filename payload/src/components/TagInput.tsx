@@ -1,6 +1,7 @@
 import React, { type KeyboardEventHandler } from "react";
-import { Label, useField } from "payload/components/forms";
+import { FieldDescription, Label, useField } from "payload/components/forms";
 import CreatableSelect from "react-select/creatable";
+import { type TextField } from "payload/types";
 
 import { ClearIndicator } from "payload/dist/admin/components/elements/ReactSelect/ClearIndicator";
 import { Control } from "payload/dist/admin/components/elements/ReactSelect/Control";
@@ -12,10 +13,8 @@ import { Option } from "payload/dist/admin/components/elements/ReactSelect/types
 
 import "./TagInput.scss";
 
-type Props = {
+type Props = Omit<TextField, "type"> & {
   path: string;
-  label: string;
-  name: string;
 };
 
 const components = {
@@ -28,7 +27,7 @@ const components = {
   DropdownIndicator: null,
 };
 
-const TagInput: React.FC<Props> = ({ path, label, name }) => {
+const TagInput: React.FC<Props> = ({ path, label, name, required, admin: { description } }) => {
   const { value, setValue } = useField<string>({ path });
 
   const [inputValue, setInputValue] = React.useState("");
@@ -56,7 +55,7 @@ const TagInput: React.FC<Props> = ({ path, label, name }) => {
 
   return (
     <div className="field-type">
-      <Label htmlFor={`field-${path.replace(/\./gi, "__")}`} label={label} />
+      <Label htmlFor={`field-${path.replace(/\./gi, "__")}`} label={label} required={required} />
       <CreatableSelect
         components={components}
         inputValue={inputValue}
@@ -71,6 +70,7 @@ const TagInput: React.FC<Props> = ({ path, label, name }) => {
         onKeyDown={handleKeyDown}
         value={tags}
       />
+      <FieldDescription description={description} value={value} />
     </div>
   );
 };

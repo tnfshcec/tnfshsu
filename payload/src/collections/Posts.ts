@@ -16,11 +16,13 @@ const Posts: CollectionConfig = {
     {
       name: "title",
       type: "text",
+      required: true,
     },
     {
       name: "department",
       type: "relationship",
       relationTo: "departments",
+      required: true,
       admin: { allowCreate: false },
     },
     {
@@ -28,6 +30,7 @@ const Posts: CollectionConfig = {
       // which is not ideal - good enough (i guess)
       name: "tags",
       type: "text",
+      required: true,
       admin: {
         components: { Field: TagInput },
       },
@@ -35,6 +38,7 @@ const Posts: CollectionConfig = {
     {
       name: "content",
       type: "richText",
+      required: true,
     },
   ],
 };

@@ -15,12 +15,16 @@ const Departments: CollectionConfig = {
     {
       name: "name",
       type: "text",
+      required: true,
     },
     {
       name: "icon",
       // TODO: custom icon picker with type "text"
       type: "text",
+      required: true,
       admin: {
+        description:
+          "Use this field to search for icons. Refer to https://icones.js.org/collection/mdi for available icons. Icon preview may be added later.",
         components: {
           Field: (props) =>
             IconSelector({
@@ -58,10 +62,12 @@ const Departments: CollectionConfig = {
     {
       name: "overview",
       type: "text",
+      required: true,
       maxLength: 60,
     },
     {
       name: "description",
+      required: true,
       type: "richText",
     },
   ],
