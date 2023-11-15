@@ -9,50 +9,68 @@
 export interface Config {
   collections: {
     posts: Post;
+    departments: Department;
     users: User;
     media: Media;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  globals: {};
+  globals: {
+    faq: Faq;
+    socials: Social;
+  };
 }
 export interface Post {
   id: string;
-  title?: string;
-  hallo?: string;
-  publishedDate?: string;
-  content?: {
+  title: string;
+  department: string | Department;
+  tags: string;
+  content: {
     [k: string]: unknown;
   }[];
-  status?: 'draft' | 'published';
+  lastModifiedBy?: (string | null) | User;
+  updatedAt: string;
+  createdAt: string;
+}
+export interface Department {
+  id: string;
+  name: string;
+  icon: string;
+  overview: string;
+  description: {
+    [k: string]: unknown;
+  }[];
+  lastModifiedBy?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
 }
 export interface User {
   id: string;
-  name?: string;
+  name?: string | null;
+  lastModifiedBy?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
   email: string;
-  resetPasswordToken?: string;
-  resetPasswordExpiration?: string;
-  salt?: string;
-  hash?: string;
-  loginAttempts?: number;
-  lockUntil?: string;
-  password: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  password: string | null;
 }
 export interface Media {
   id: string;
-  alt?: string;
+  alt?: string | null;
+  lastModifiedBy?: (string | null) | User;
   updatedAt: string;
   createdAt: string;
-  url?: string;
-  filename?: string;
-  mimeType?: string;
-  filesize?: number;
-  width?: number;
-  height?: number;
+  url?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
 }
 export interface PayloadPreference {
   id: string;
@@ -60,7 +78,7 @@ export interface PayloadPreference {
     relationTo: 'users';
     value: string | User;
   };
-  key?: string;
+  key?: string | null;
   value?:
     | {
         [k: string]: unknown;
@@ -75,10 +93,35 @@ export interface PayloadPreference {
 }
 export interface PayloadMigration {
   id: string;
-  name?: string;
-  batch?: number;
+  name?: string | null;
+  batch?: number | null;
   updatedAt: string;
   createdAt: string;
+}
+export interface Faq {
+  id: string;
+  entries?:
+    | {
+        question: string;
+        answer: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+export interface Social {
+  id: string;
+  entries?:
+    | {
+        Name: string;
+        url: string;
+        icon: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
 }
 
 

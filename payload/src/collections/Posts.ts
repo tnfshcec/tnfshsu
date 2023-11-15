@@ -1,4 +1,6 @@
+import TagInput from "@/components/TagInput";
 import { CollectionConfig } from "payload/types";
+
 const Posts: CollectionConfig = {
   slug: "posts",
   admin: {
@@ -10,71 +12,34 @@ const Posts: CollectionConfig = {
     create: () => true,
     update: () => true,
   },
-  hooks: {
-    afterChange: [
-      async () => {
-        /*
-        console.log(process.env.TOKEN);
-
-        try {
-          process.env.NODE_ENV !== "development" &&
-            console.log(
-              await fetch(
-                `https://api.github.com/repos/${process.env.REPOSITORY}/dispatches`,
-                {
-                  method: "POST",
-                  headers: {
-                    Accept: "application/vnd.github.everest-preview+json",
-                    Authorization: `token ${process.env.TOKEN}`,
-                  },
-                  body: JSON.stringify({
-                    event_type: "payload_update",
-                  }),
-                }
-              )
-            );
-        } catch (e) {
-          console.log(e);
-        }
-        */
-      },
-    ],
-  },
   fields: [
     {
       name: "title",
       type: "text",
+      required: true,
     },
     {
-      name: "hallo",
+      name: "department",
+      type: "relationship",
+      relationTo: "departments",
+      required: true,
+      admin: { allowCreate: false },
+    },
+    {
+      // INFO: saved as space-delimited text,
+      // which is not ideal - good enough (i guess)
+      name: "tags",
       type: "text",
+      required: true,
+      admin: {
+        components: { Field: TagInput },
+        placeholder: "Type in tags... (Submit by Enter or Space)"
+      },
     },
-    {
-      name: "publishedDate",
-      type: "date",
-    },
-
     {
       name: "content",
       type: "richText",
-    },
-    {
-      name: "status",
-      type: "select",
-      options: [
-        {
-          value: "draft",
-          label: "Draft",
-        },
-        {
-          value: "published",
-          label: "Published",
-        },
-      ],
-      defaultValue: "draft",
-      admin: {
-        position: "sidebar",
-      },
+      required: true,
     },
   ],
 };
