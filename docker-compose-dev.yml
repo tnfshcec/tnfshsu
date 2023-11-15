@@ -14,6 +14,7 @@ services:
     volumes:
       - ./payload/src:/base/src
       - ./astro/src/types.ts:/types.ts
+      - /base/node_modules/
     ports:
       - 3001:3001
 
