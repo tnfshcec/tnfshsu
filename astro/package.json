@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.0.2",
+    "@fontsource/noto-serif-tc": "^5.0.7",
     "@slate-serializers/dom": "^2.1.0",
     "@slate-serializers/html": "^2.1.0",
     "astro": "^3.5.2"
