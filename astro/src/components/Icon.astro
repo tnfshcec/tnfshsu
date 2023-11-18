@@ -1,24 +1,14 @@
 ---
-import type { IconifyJSON } from "@iconify/types";
+import { getIcon } from "@/utils/iconifyIcon";
 
 interface Props extends astroHTML.JSX.SVGAttributes {
-  prefix: string;
   icon: string;
 }
 
-const { prefix, icon, ...rest } = Astro.props;
-const iconify = `https://api.iconify.design/${prefix}.json?icons=${icon}`;
+const { icon, ...rest } = Astro.props;
+const iconData = await getIcon(icon);
 
-const iconJson = await fetch(iconify).then<IconifyJSON>((r) => r.json());
-
-const iconData = iconJson.icons[icon];
-
-const viewBox = [
-  iconData.left ?? iconJson.left ?? 0,
-  iconData.top ?? iconJson.top ?? 0,
-  iconData.width ?? iconJson.width ?? 16,
-  iconData.height ?? iconJson.height ?? 16,
-].join(" ");
+const viewBox = [iconData.left, iconData.top, iconData.width, iconData.height].join(" ");
 ---
 
 <svg viewBox={viewBox} {...rest} set:html={iconData.body} />
