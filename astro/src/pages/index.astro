@@ -1,4 +1,5 @@
 ---
+import Icon from "@/components/Icon.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getPosts } from "@/utils/payload";
 
@@ -9,6 +10,7 @@ const posts = await getPosts();
   <main>
     <h1>Astroad</h1>
     <p>
+      <Icon icon="mdi:volleyball" width="64" height="64" />
       Astroad is a pre-configured setup for Astro and Payloadcms that makes it
       easy to get started with building your website. With Astroad, you'll have
       a complete development environment that you can run locally using Docker.

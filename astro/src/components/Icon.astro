@@ -1,0 +1,14 @@
+---
+import { getIcon } from "@/utils/iconifyIcon";
+
+interface Props extends astroHTML.JSX.SVGAttributes {
+  icon: string;
+}
+
+const { icon, ...rest } = Astro.props;
+const iconData = await getIcon(icon);
+
+const viewBox = [iconData.left, iconData.top, iconData.width, iconData.height].join(" ");
+---
+
+<svg viewBox={viewBox} {...rest} set:html={iconData.body} />
