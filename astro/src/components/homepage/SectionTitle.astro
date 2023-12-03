@@ -6,16 +6,21 @@ interface Props {
 const { title } = Astro.props;
 ---
 
-<div>
+<div class="section-title">
   <div class="title">{title}</div>
   <div class="underline"></div>
 </div>
 
 <style>
+  .section-title {
+    align-self: center;
+  }
+
   .title {
     color: rgb(var(--text));
     font: var(--section-title);
   }
+
   .underline {
     margin: -12px 0 0 0;
     background: rgb(var(--accent) / 0.8);
