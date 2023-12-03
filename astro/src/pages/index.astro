@@ -12,7 +12,7 @@ const posts = await getPosts();
 ---
 
 <Layout title="Astroad">
-  <section class="hero">
+  <section class="hero content-section">
     <div class="title">
       <div class="main-title">由南一中學生組成，<br />為南一中學生服務。</div>
       <div class="subtitle">
@@ -29,7 +29,7 @@ const posts = await getPosts();
     </div>
   </section>
 
-  <section class="news">
+  <section class="news content-section">
     <SectionTitle title="最新消息" />
     <div class="container">
       <PostLink department="DEPARTMENT" title="HELLO YOUR MOM" date="1111-11-11" href="#" />
@@ -37,7 +37,7 @@ const posts = await getPosts();
     </div>
   </section>
 
-  <section class="about">
+  <section class="about content-section">
     <SectionTitle title="關於學生會" />
     <div class="about-intro about-section">
       <div class="intro-figure"></div>
@@ -84,7 +84,7 @@ const posts = await getPosts();
     </div>
   </section>
 
-  <section class="faq">
+  <section class="faq content-section">
     <SectionTitle title="常見問題" />
     <div class="container">
       <QuestionExpand
@@ -103,6 +103,15 @@ const posts = await getPosts();
 </Layout>
 
 <style lang="scss">
+  section.content-section {
+    padding: 4rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+  }
+
   .hero {
     background: radial-gradient(
         27.99% 41.98% at 31.04% 36.3%,
@@ -114,12 +123,7 @@ const posts = await getPosts();
         rgba(223, 191, 109, 0.8) 0%,
         rgba(223, 191, 109, 0) 100%
       );
-    padding: 4rem 0;
-    display: flex;
-    flex-direction: column;
     gap: 2rem;
-    align-items: center;
-    width: 100%;
     height: 40rem;
 
     .title {
@@ -158,13 +162,6 @@ const posts = await getPosts();
   }
 
   .news {
-    padding: 4rem 0rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    width: 100%;
-
     .container {
       background: rgb(var(--secondary) / 0.4);
       border-radius: 1rem;
@@ -182,12 +179,26 @@ const posts = await getPosts();
   }
 
   .about {
-    padding: 4rem 0rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    align-items: stretch;
-    width: 100%;
+    .about-section {
+      padding: 2rem 0rem;
+      display: flex;
+      align-self: stretch;
+      align-items: center;
+
+      &:nth-child(odd) {
+        background: rgb(var(--secondary) / 0.4);
+      }
+
+      .about-title {
+        font: var(--subtitle-bold);
+      }
+    }
+
+    .about-intro,
+    .about-aim {
+      gap: 2rem;
+      justify-content: center;
+    }
 
     .intro-figure,
     .aim-figure {
@@ -197,26 +208,6 @@ const posts = await getPosts();
       border-width: 0.1875rem;
       width: 12rem;
       height: 12rem;
-    }
-
-    .about-title {
-      font: var(--subtitle-bold);
-    }
-
-    div.about-section {
-      padding: 2rem 0rem;
-      display: flex;
-      align-items: center;
-
-      &:nth-child(odd) {
-        background: rgb(var(--secondary) / 0.4);
-      }
-    }
-
-    .about-intro,
-    .about-aim {
-      gap: 2rem;
-      justify-content: center;
     }
 
     .about-works,
@@ -250,25 +241,16 @@ const posts = await getPosts();
     }
   }
 
-  .faq {
-    padding: 4rem 0rem;
+  .faq .container {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    width: 100%;
+    gap: 0.5rem;
 
-    .container {
+    .faq-info {
+      padding: 0.5rem 0;
       display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-
-      .faq-info {
-        padding: 0.5rem 0;
-        display: flex;
-        align-items: center;
-        align-self: stretch;
-      }
+      align-items: center;
+      align-self: stretch;
     }
   }
 </style>
