@@ -1,0 +1,40 @@
+---
+import Socials from "./Socials.astro";
+
+const copyrightOrgs = ["", ""] as const;
+---
+
+<div class="footer">
+  <div class="container">
+    <div class="copyright">
+      <span>© 臺南一中學聯會</span>
+      <span>© 臺南一中電機社</span>
+    </div>
+
+    <Socials />
+  </div>
+</div>
+
+<style lang="scss">
+  .footer {
+    width: 100%;
+  }
+
+  .container {
+    border: solid rgb(var(--text) / 0.4); 
+    border-width: 1px 0;
+
+    padding: 16px 8px 16px 8px;
+    margin: 64px auto;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+  }
+
+  .copyright {
+    display: flex;
+    gap: 16px;
+  }
+</style>
