@@ -1,5 +1,6 @@
 ---
-import "@fontsource/noto-serif-tc";
+import "@fontsource/noto-serif-tc/400.css";
+import "@fontsource/noto-serif-tc/700.css";
 
 import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
@@ -20,7 +21,11 @@ const { title } = Astro.props;
   </head>
   <body>
     <Navbar />
-    <slot />
+
+    <main>
+      <slot />
+    </main>
+
     <Footer />
   </body>
 </html>
@@ -51,5 +56,33 @@ const { title } = Astro.props;
   body {
     padding: 0;
     margin: 0;
+  }
+
+  .btn-primary {
+    background: rgb(var(--primary));
+    border-radius: 16px;
+    border: 0;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    color: rgb(var(--text));
+    font: var(--main-text);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    border: solid rgb(var(--primary)) 1px;
+    border-radius: 16px;
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    color: rgb(var(--text));
+    font: var(--main-text);
   }
 </style>

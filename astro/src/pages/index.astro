@@ -1,5 +1,6 @@
 ---
 import Icon from "@/components/Icon.astro";
+import Socials from "@/components/Socials.astro";
 import Layout from "@/layouts/Layout.astro";
 import { getPosts } from "@/utils/payload";
 
@@ -7,41 +8,78 @@ const posts = await getPosts();
 ---
 
 <Layout title="Astroad">
-  <main>
-    <h1>Astroad</h1>
-    <p>
-      <Icon icon="mdi:volleyball" width="64" height="64" />
-      Astroad is a pre-configured setup for Astro and Payloadcms that makes it
-      easy to get started with building your website. With Astroad, you'll have
-      a complete development environment that you can run locally using Docker.
-      This makes it easy to test and develop your website before deploying it to
-      a production environment.
-      <br />
-       When you're ready to deploy the website on your own server, Astrotus
-      comes with a production environment that requires the use of Traefik as a
-      reverse proxy. This setup provides a secure and scalable production
-      environment for your website.
-    </p>
-    <h2>Posts</h2>
-    <div>
-      {
-        posts.length > 0 ? (
-          posts.map((post) => (
-            <a href={`/posts/${post.id}/`}>
-              <article>
-                <h3 transition:name=`title-${post.id}`>{post.title}</h3>
-                {post.publishedDate && (
-                  <p>
-                    {new Date(post.publishedDate)}
-                  </p>
-                )}
-              </article>
-            </a>
-          ))
-        ) : (
-          <p>Add Posts in Payloadcms</p>
-        )
-      }
+  <section class="hero">
+    <div class="title">
+      <div class="main-title">由南一中學生組成，<br />為南一中學生服務。</div>
+      <div class="subtitle">
+        學生會是學聯會之最高行政機關，負責處理日常事務、活動辦理、<br />友校交流及監督學校之行為。
+      </div>
     </div>
-  </main>
+    <div class="buttons">
+      <button class="btn-primary">最新消息</button>
+      <button class="btn-secondary">更多資訊</button>
+    </div>
+    <div class="socials">
+      <div class="socials-title">聯絡我們</div>
+      <Socials />
+    </div>
+  </section>
 </Layout>
+
+<style lang="scss">
+  .hero {
+    background: radial-gradient(
+        27.99% 41.98% at 31.04% 36.3%,
+        rgba(223, 191, 109, 0.4) 0%,
+        rgba(223, 191, 109, 0) 100%
+      ),
+      radial-gradient(
+        29.06% 43.59% at 65.94% 19.53%,
+        rgba(223, 191, 109, 0.8) 0%,
+        rgba(223, 191, 109, 0) 100%
+      );
+    padding: 64px 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 640px;
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+      justify-content: center;
+
+      .main-title {
+        font: var(--page-title);
+      }
+      .subtitle {
+        font: var(--subtitle);
+        text-align: center;
+      }
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      flex-grow: 1;
+    }
+
+    .socials {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+
+      .socials-title {
+        font: var(--subtitle-bold);
+      }
+    }
+  }
+</style>
