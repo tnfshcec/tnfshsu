@@ -1,0 +1,37 @@
+---
+interface Props {
+  department: string;
+  title: string;
+  date: string;
+  href: string;
+}
+
+const { department, title, date, href } = Astro.props;
+---
+
+<a class="post" href={href}>
+  <div>
+    <span class="dep">{department}</span>
+    <span>{title}</span>
+  </div>
+  <div>{date}</div>
+</a>
+
+<style lang="scss">
+  .post {
+    border-bottom: solid rgb(var(--text) / 0.6) 1px;
+    padding: 8px 0px;
+    display: flex;
+    justify-content: space-between;
+    width: 864px;
+    color: rgb(var(--text));
+    text-decoration: none;
+  }
+
+  .dep {
+    background: rgb(var(--primary));
+    border-radius: 8px;
+    padding: 4px;
+    margin-right: 8px;
+  }
+</style>

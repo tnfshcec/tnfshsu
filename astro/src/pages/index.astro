@@ -1,7 +1,9 @@
 ---
+import Layout from "@/layouts/Layout.astro";
 import Icon from "@/components/Icon.astro";
 import Socials from "@/components/Socials.astro";
-import Layout from "@/layouts/Layout.astro";
+import SectionTitle from "@/components/homepage/SectionTitle.astro";
+import PostLink from "@/components/homepage/PostLink.astro";
 import { getPosts } from "@/utils/payload";
 
 const posts = await getPosts();
@@ -22,6 +24,14 @@ const posts = await getPosts();
     <div class="socials">
       <div class="socials-title">聯絡我們</div>
       <Socials />
+    </div>
+  </section>
+
+  <section class="news">
+    <SectionTitle title="最新消息" />
+    <div class="container">
+      <PostLink department="DEPARTMENT" title="HELLO YOUR MOM" date="1111-11-11" href="#" />
+      <div class="more-link">查看更多 ⮕</div>
     </div>
   </section>
 </Layout>
@@ -80,6 +90,30 @@ const posts = await getPosts();
       .socials-title {
         font: var(--subtitle-bold);
       }
+    }
+  }
+
+  .news {
+    padding: 4rem 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+
+    .container {
+      background: rgb(var(--secondary) / 0.4);
+      border-radius: 1rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      max-width: 56rem;
+    }
+
+    .more-link {
+      color: rgba(var(--text) / 0.8);
+      align-self: flex-end;
     }
   }
 </style>
