@@ -1,0 +1,79 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import logo from "@/assets/tnfshsu-logo.png";
+---
+
+<!-- TODO: mobile view -->
+
+<div class="navbar">
+  <div class="container">
+    <div class="title">
+      <Image src={logo} alt="TNFSHSU logo" width="64" height="64" />
+      <div class="title-text">
+        <span class="title-su">臺南第一高級中學學生聯合自治會</span>
+        <br />
+        <span class="title-sa">學生會</span>
+      </div>
+    </div>
+    <div class="links">
+      <div class="link-item">
+        <div class="link-name">學生會</div>
+        <Icon icon="mdi:chevron-down" width="16" height="16" />
+      </div>
+      <div class="link-item">
+        <div class="link-name">學生議會</div>
+        <Icon icon="mdi:chevron-down" width="16" height="16" />
+      </div>
+      <div class="link-item">
+        <div class="link-name">學生評議委員會</div>
+        <Icon icon="mdi:chevron-down" width="16" height="16" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .navbar {
+    background-color: var(--background);
+    width: 100%;
+    backdrop-filter: blur(8px);
+  }
+
+  .container {
+    display: flex;
+    margin: 0 auto;
+    padding: 16px 32px;
+    justify-content: space-between;
+    max-width: 1280px;
+  }
+
+  .title {
+    display: flex;
+    gap: 8px;
+
+    .title-su {
+      font: var(--main-text);
+    }
+
+    .title-sa {
+      font: var(--section-title);
+    }
+  }
+
+  .links {
+    display: flex;
+    gap: 32px;
+
+    .link-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .link-name {
+      text-align: left;
+      font: var(--main-text);
+    }
+  }
+</style>

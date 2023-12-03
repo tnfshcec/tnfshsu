@@ -18,7 +18,7 @@ const iconifyDefault = {
 } as const satisfies { [key in keyof Required<IconifyOptional>]: IconifyOptional[key] };
 
 function separatePrefix(icon: string): [string, string] {
-  if (!/^\w+:\w+$/.test(icon)) {
+  if (!/^\w+:[\w-]+$/.test(icon)) {
     throw new Error(`Invalid icon name: '${icon}'`);
   }
   // WARNING: any ¯\_(ツ)_/¯
