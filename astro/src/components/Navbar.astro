@@ -5,17 +5,16 @@ import logo from "@/assets/tnfshsu-logo.png";
 ---
 
 <!-- TODO: mobile view -->
-
 <div class="navbar">
   <div class="container">
-    <div class="title">
+    <a class="title" href="/">
       <Image src={logo} alt="TNFSHSU logo" width="64" height="64" />
       <div class="title-text">
         <span class="title-su">臺南第一高級中學學生聯合自治會</span>
         <br />
         <span class="title-sa">學生會</span>
       </div>
-    </div>
+    </a>
     <div class="links">
       <div class="link-item">
         <div class="link-name">學生會</div>
@@ -53,6 +52,8 @@ import logo from "@/assets/tnfshsu-logo.png";
   .title {
     display: flex;
     gap: 0.5rem;
+    color: rgb(var(--text));
+    text-decoration: none;
 
     .title-su {
       font: var(--main-text);

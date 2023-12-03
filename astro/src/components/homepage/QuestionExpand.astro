@@ -14,29 +14,40 @@ const { question, answer, opened = false } = Astro.props;
   // TODO: OPENING LOGIC
 </script>
 
-<div class="card">
-  <div class="title">
+<div class="card" data-expanded={opened}>
+  <button class="title">
     <div set:text={question} />
-    <Icon icon="mdi:plus" width="32" height="32" />
-  </div>
-  {opened ? <div class="content" set:text={answer} /> : <></>}
+    <Icon icon="mdi:plus" width="32" height="32" class="plus-icon" />
+  </button>
+  {opened && <div class="content" set:text={answer} />}
 </div>
 
-  <style lang="scss">
-    .card {
-      border-bottom: solid rgb(var(--text) / 0.4) 1px;
-      padding: 1rem 0rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      width: 56rem;
-      align-items: stretch;
+<style lang="scss">
+  .card {
+    border-bottom: solid rgb(var(--text) / 0.4) 1px;
+    padding: 1rem 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 56rem;
+    align-items: stretch;
 
-      .title {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font: var(--subtitle-bold);
-      }
+    .title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      font: var(--subtitle-bold);
+      border: 0;
+      background: transparent;
+      cursor: pointer;
     }
-  </style>
+
+    .plus-icon {
+      transition: rotate ease-in 500ms;
+    }
+
+    &[data-expanded] .plus-icon {
+      rotate: 45deg;
+    }
+  }
+</style>
