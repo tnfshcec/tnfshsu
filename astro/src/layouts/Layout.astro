@@ -38,14 +38,14 @@ const { title } = Astro.props;
     --primary: 223 191 109; // #dfbf6d
     --secondary: 237 230 212; // #ede6d4
 
-    --smaller-text: 400 20px "Noto Serif TC", sans-serif;
-    --main-text: 400 16px "Noto Serif TC", sans-serif;
-    --main-bold: 700 16px "Noto Serif TC", sans-serif;
-    --subtitle: 400 24px "Noto Serif TC", sans-serif;
-    --subtitle-bold: 700 24px "Noto Serif TC", sans-serif;
-    --navbar-title: 400 32px "Noto Serif TC", sans-serif;
-    --section-title: 700 32px "Noto Serif TC", sans-serif;
-    --page-title: 700 64px "Noto Serif TC", sans-serif;
+    --smaller-text: 400 1.25rem "Noto Serif TC", sans-serif;
+    --main-text: 400 1rem "Noto Serif TC", sans-serif;
+    --main-bold: 700 1rem "Noto Serif TC", sans-serif;
+    --subtitle: 400 1.5rem "Noto Serif TC", sans-serif;
+    --subtitle-bold: 700 1.5rem "Noto Serif TC", sans-serif;
+    --navbar-title: 400 2rem "Noto Serif TC", sans-serif;
+    --section-title: 700 2rem "Noto Serif TC", sans-serif;
+    --page-title: 700 4rem "Noto Serif TC", sans-serif;
 
     color: rgb(var(--text));
     background-color: rgb(var(--background));
@@ -60,9 +60,9 @@ const { title } = Astro.props;
 
   .btn-primary {
     background: rgb(var(--primary));
-    border-radius: 16px;
+    border-radius: 1rem;
     border: 0;
-    padding: 8px 16px;
+    padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,8 +75,8 @@ const { title } = Astro.props;
   .btn-secondary {
     background: transparent;
     border: solid rgb(var(--primary)) 1px;
-    border-radius: 16px;
-    padding: 8px 16px;
+    border-radius: 1rem;
+    padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
