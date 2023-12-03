@@ -2,34 +2,94 @@
 import Icon from "../Icon.astro";
 ---
 
-<div class="16">
-  <div class="frame-15">
+<div class="current-dep dep-card">
+  <div class="card-title">
     <Icon icon="mdi:fountain-pen-tip" width="32" height="32" />
-    <div class="17">秘書處</div>
+    <div>秘書處</div>
   </div>
-  <div class="18">
+  <div>
     襄理會長處理行政事務，綜理日常行政事務、交接傳承、常務人員之招募、文件之整理與建檔、會議記錄之整理。
   </div>
 </div>
-<div class="19">
-  <div class="20">
+<div class="other-deps">
+  <div class="dep-card card-title">
     <Icon icon="mdi:volleyball" width="32" height="32" />
-    <div class="17">活動部</div>
+    <div>活動部</div>
   </div>
-  <div class="20">
+  <div class="dep-card card-title">
     <Icon icon="mdi:account-group" width="32" height="32" />
-    <div class="17">公共關係部</div>
+    <div>公共關係部</div>
   </div>
-  <div class="20">
+  <div class="dep-card card-title">
     <Icon icon="mdi:currency-usd" width="32" height="32" />
-    <div class="17">財政部</div>
+    <div>財政部</div>
   </div>
-  <div class="20">
+  <div class="dep-card card-title">
     <Icon icon="mdi:text-box-multiple" width="32" height="32" />
-    <div class="17">主計處</div>
+    <div>主計處</div>
   </div>
-  <div class="20">
+  <div class="dep-card card-title">
     <Icon icon="mdi:bullhorn" width="32" height="32" />
-    <div class="17">學生權益部</div>
+    <div>學生權益部</div>
   </div>
 </div>
+<div class="progress">
+  <div class="progress-item active"></div>
+  <div class="progress-item"></div>
+  <div class="progress-item"></div>
+  <div class="progress-item"></div>
+  <div class="progress-item"></div>
+  <div class="progress-item"></div>
+</div>
+
+<style lang="scss">
+  // TODO: MOBILE VIEW
+
+  .dep-card {
+    background: rgb(var(--secondary));
+    border-radius: 1rem;
+    padding: 0.5rem;
+  }
+
+  .card-title {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    align-items: center;
+    font: var(--main-bold);
+  }
+
+  .current-dep {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 24rem;
+    max-height: 8rem;
+  }
+
+  .other-deps {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .progress {
+    display: flex;
+    gap: 1rem;
+
+    .progress-item {
+      background: rgb(var(--accent) / 0.6);
+      border-radius: 10000px;
+      width: 1rem;
+      height: 1rem;
+
+      &.active {
+        background: linear-gradient(to right, rgb(var(--accent)) 63%, rgb(var(--accent) / 0.6) 63%);
+        border-radius: 10000px;
+        width: 3rem;
+        height: 1rem;
+      }
+    }
+  }
+</style>
