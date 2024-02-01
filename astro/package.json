@@ -9,12 +9,12 @@
     "@fontsource/noto-serif-tc": "^5.0.7",
     "@slate-serializers/dom": "^2.1.0",
     "@slate-serializers/html": "^2.1.0",
-    "astro": "^3.5.2"
+    "astro": "^4.2.8"
   },
   "devDependencies": {
     "@iconify/types": "^2.0.0",
     "autoprefixer": "^10.4.16",
     "cssnano": "^6.0.1",
-    "sass": "^1.69.5"
+    "sass": "^1.70.0"
   }
 }
